@@ -11,19 +11,15 @@ int main(void) {
 
 	int n;
 	cin >> n;
-	int num = 0;
-	vector <int> v;
+	vector <int> v(n);
 
 	for (int i = 0; i < n; i++) {
-		cin >> num;
-		v.push_back(num);
+		cin >> v[i];
 	}
 	sort(v.begin(),v.end());
 
 	for (int i = 0; i < n; i++) {
 		cout << v[i] << "\n";
 	}
-
-
 	return 0;
 }
