@@ -9,13 +9,10 @@ int main() {
 
 	int a, b;
 	cin >> a >> b;
-	// 짝수공식
-	int x = -a + sqrt(a * a - b);
-	int y = -a - sqrt(a * a - b);
-
-	if (x == y) cout << x;
-	else cout << y << " " << x;
 	
+	for (int i = -1000; i <= 1000; i++) {
+		if ((i * i) + (2 * a * i) + b == 0) cout << i<< ' ';
+	}
 	
 	return 0;
 }
