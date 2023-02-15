@@ -4,9 +4,27 @@
 using namespace std;
 
 vector <int> v;
-vector<bool> visited;
+bool visited[9] = { 0, };
 int n, m;
 
+void dfs(int cnt, int idx) {
+    if (cnt == m) {
+        for (int i = 0; i < n; i++) {
+            if (visited[i]) {
+                cout << v[i] << ' ';
+            }
+        }
+        cout << '\n';
+        return;
+    }
+    for (int i = idx; i < n; i++) {
+        if (!visited[i]) {
+            visited[i] = true;
+            dfs(cnt + 1, i + 1);
+            visited[i] = false;
+        }
+    }
+}
 int main(){
 
     cin.tie(NULL);
@@ -18,25 +36,7 @@ int main(){
     for (int i = 1; i <= n; i++) {
         v.push_back(i);
     }
-
-    for (int i = 0; i < n; i++) {
-        if (i < m) {
-            visited.push_back(true);
-        }
-        else {
-            visited.push_back(false);
-        }
-    }
-
-    do {
-        for (int i = 0; i < v.size(); i++) {
-            if (visited[i]) {
-                cout << v[i] << ' ';
-            }
-        }
-        cout << '\n';
-    } while (prev_permutation(visited.begin(), visited.end()));
-
+    dfs(0, 0);  // 카운트, 시작점
 
     return 0;
  }
