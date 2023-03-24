@@ -7,31 +7,12 @@ int t, num;    // 입력 받을 변수
 void check_Partition(int start){ // 파티션 개수 체크 
     
     int difCnt =0;  // 개수 체크할 변수 초기화
-for(int i=2;i<=start;i++){
-        if(arr[i]+arr[start-i]==start) {
-            difCnt++;
-            if(start-i==i) difCnt++;
-        }
-
+    for(int i=2;i<=start/2;i++){
+        if(arr[i]+arr[start-i]==start) difCnt++;
     }
-//////////////////////////////////
-//    for(int i=start;i>=start/2;i--){  // 똑같이 시간초과
-//        if(arr[i]==0) continue;
-//        for(int j=2;j<=start/2;j++){
-//            if(arr[j]==0) continue;
-//            if(arr[i]+arr[j] == start) difCnt++;
-//        }
-//    }
-///////////////////////////////////
-//    for(int i=start/2;i>=2;i--){    // 입력받은 숫자의 중간값부터 1씩 감소
-//        if(arr[i]==0) continue; // 소수가 아니라면 skip
-//        for(int j = i;j<=start;j++){    // 0이 아닌 i값부터 입력값까지 1씩 증가
-//            if(arr[i]+arr[j]>start) break;    // 시간초과 방지(하지만 시간초과 뜸;)
-//            if(arr[i]+arr[j]==start) difCnt++;    // 파티션 확인
-//        }
-//    }
 
-    cout << difCnt/2 << '\n';
+
+    cout << difCnt << '\n';
 }
 
 int main() {
