@@ -1,42 +1,38 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
 using namespace std;
 
-vector <int> v;
-bool visited[9] = { 0, };
-int n, m;
+int n=0, m=0;
+bool visited[9]={0};
+vector <int> nums;
 
-void dfs(int cnt, int idx) {
-    if (cnt == m) {
-        for (int i = 0; i < n; i++) {
-            if (visited[i]) {
-                cout << v[i] << ' ';
-            }
+void combination(int cnt, int next){
+    if(cnt == m){
+        for(int i=0;i<m;i++){
+            cout << nums[i] << ' ';
         }
         cout << '\n';
         return;
     }
-    for (int i = idx; i < n; i++) {
-        if (!visited[i]) {
-            visited[i] = true;
-            dfs(cnt + 1, i + 1);
-            visited[i] = false;
+
+    for(int i=next;i<=n;i++){
+        if(!visited[i]){
+            visited[i] = 1;
+            nums.push_back(i);
+            combination(cnt+1, i+1);
+            visited[i] = 0;
+            nums.pop_back();
         }
     }
 }
-int main(){
+int main() {
 
+    ios::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-    ios::sync_with_stdio(false);
 
-    cin >> n >> m;
-    
-    for (int i = 1; i <= n; i++) {
-        v.push_back(i);
-    }
-    dfs(0, 0);  // 카운트, 시작점
+    cin >> n>> m;
+    combination(0,1);
 
     return 0;
- }
+}
