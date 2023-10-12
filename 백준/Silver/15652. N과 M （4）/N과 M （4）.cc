@@ -1,37 +1,38 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
 using namespace std;
 
-int n,m;
-vector <int> v;
-int arr[8]={0};
-bool visited[8][8];
+int n=0, m=0;
+bool visited[9]={0};
+vector <int> nums;
 
-void dfs(int cnt, int start){
-    if(cnt==m){
-        for(int i=0;i<v.size();i++){
-            cout << v[i]<<' ';
+void permutation(int cnt, int next){
+    if(cnt == m){
+        for(int i=0;i<m;i++){
+            cout << nums[i] << ' ';
         }
         cout << '\n';
         return;
     }
-    for(int i=start;i<n;i++){
-        if(visited[cnt][i])continue;
-        visited[cnt][i] = true;
-        v.push_back(arr[i]);
-        dfs(cnt+1,arr[i]-1);
-        visited[cnt][i]=false;
-        v.pop_back();
+
+    for(int i=next;i<=n;i++){
+
+        //visited[i] = 1;
+        nums.push_back(i);
+        permutation(cnt + 1, i);
+        //visited[i] = 0;
+        nums.pop_back();
+
     }
 }
+int main() {
 
-int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
     cin >> n>> m;
-    
-    for(int i=0;i<n;i++){
-        arr[i] = i+1;
-    }
-    dfs(0,0);
+    permutation(0,1);
+
     return 0;
 }
