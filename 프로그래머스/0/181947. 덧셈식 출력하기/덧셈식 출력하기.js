@@ -5,9 +5,12 @@ const rl = readline.createInterface({
 });
 
 let input = [];
+let a,b;
 
 rl.on('line', function (line) {
     input = line.split(' ');
+    a = Number(input[0]);
+    b = Number(input[1]);
 }).on('close', function () {
-    console.log("%d + %d = %d",input[0], input[1], Number(input[0]) + Number(input[1]));
+    console.log(`${a} + ${b} = ${a+b}`);
 });
