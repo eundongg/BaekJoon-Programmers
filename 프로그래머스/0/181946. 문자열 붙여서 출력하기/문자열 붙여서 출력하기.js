@@ -9,7 +9,8 @@ let input = [];
 rl.on('line', function (line) {
     input = line.split(' ');
 }).on('close', function () {
-    str1 = input[0];
-    str2 = input[1];
-    console.log(str1+str2);
+    console.log(input.join(''))
+    //join()이면 기본 구분자(쉼표)가 삽입됨
+    //join('')이면 구분자 없이 문자열 연결
+    //join('-')이면 -을 구분자로 사용
 });
