@@ -1,9 +1,10 @@
 function solution(num_list) {
-    let oddSum ="";
-    let evenSum = "";
-    for(let i=0;i<num_list.length;i++){
-        if(num_list[i]%2==1) oddSum+= num_list[i];
-        else if(num_list[i]%2==0) evenSum +=num_list[i];
-    }
+    
+    const {oddSum,evenSum} = num_list.reduce((acc,num)=> {
+        if(num%2==1) acc.oddSum += num;
+        else acc.evenSum += num;
+        return acc;
+    },{oddSum:"",evenSum:""});
+    
     return Number(oddSum)+Number(evenSum);
 }
