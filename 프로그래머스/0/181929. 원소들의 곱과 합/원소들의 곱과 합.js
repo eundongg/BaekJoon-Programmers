@@ -1,13 +1,13 @@
 function solution(num_list) {
-
-    let sum =0;
-    let multi = 1;
     
-    for(let i=0;i<num_list.length;i++){
-        sum += (num_list[i]);
-        multi *= num_list[i];
-    }
-    console.log(sum**2);
-    console.log(multi);
+    const {sum,multi} = num_list.reduce(
+        (acc,num) => {
+            acc.sum += num;
+            acc.multi *=num;
+            return acc;
+        },
+        {sum:0,multi:1}
+    );
+    
     return (sum**2>multi)? 1:0;
 }
