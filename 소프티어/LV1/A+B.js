@@ -23,6 +23,6 @@ rl.on("line",function(line){
 
     for(let i =1;i<=testCase;i++){
         let [A,B] = input[i].split(" ").map(Number); // 숫자로 변환
-        console.log(Case #`${i}: ${A+B}`);
+        console.log(`Case #${i}: ${A+B}`);
     }
 })
