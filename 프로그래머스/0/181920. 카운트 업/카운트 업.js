@@ -1,7 +1,3 @@
 function solution(start_num, end_num) {
-    let list =[];
-    for(let i = start_num;i<=end_num;i++){
-        list.push(i);
-    }
-    return list;
+    return Array.from({ length: end_num - start_num + 1 }, (_, i) => start_num + i);
 }
