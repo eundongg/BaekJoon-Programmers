@@ -1,8 +1,7 @@
 function solution(my_strings, parts) {
-    let result ="";
-    for(let i=0;i<my_strings.length;i++){
-        const [s,e] = parts[i];        
-        result += my_strings[i].slice(s,e+1);
-    }
-    return result;
+    return my_strings.map((str,idx)=> str.slice(parts[idx][0],parts[idx][1]+1)).join(""); 
 }
+// 00 01
+// 10 11
+// 20 21
+// 30 31
