@@ -3,28 +3,25 @@ public class Main{
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         
-        String str = br.readLine().toLowerCase();
-        int[] arr = new int[26];
-        int max = 0;
-        char word = ' ';
-        boolean flag = true;
+        String str = br.readLine().toUpperCase();
+        int[] cnt = new int[26];
         
         for(int i=0;i<str.length();i++){
-            int idx = str.charAt(i)-'a';
-            arr[idx]++;
-            if(max<arr[idx]) {
-                max = arr[idx];
-                word = str.charAt(i);
-                flag = true;
-            }else if(max == arr[idx] && word != str.charAt(i)){
-                flag = false;
+            cnt[str.charAt(i)-'A']++;
+        }       
+       
+        int max = 0;
+        char word = ' ';
+        
+        for(int i=0;i<26;i++){
+            if(cnt[i]>max){
+                max = cnt[i];
+                word = (char)(i+'A');
+            }else if(cnt[i]==max){
+                word = '?';
             }
         }
-        if(flag){
-            System.out.print(Character.toUpperCase(word));
-        }else{
-            System.out.print('?');
-        }
+        System.out.print(word);
         
     }
 }
